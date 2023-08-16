@@ -15,6 +15,7 @@ class CustomProfile extends StatelessWidget {
     this.bold,
     required this.iconName,
     this.iconcolor,
+    this.onTap,
   });
   final Color? color;
   final Color? textcolor;
@@ -22,34 +23,40 @@ class CustomProfile extends StatelessWidget {
   final bool? bold;
   final String iconName;
   final Color? iconcolor;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: screenWidth(30), vertical: screenWidth(20)),
-      child: Row(
-        children: [
-          Container(
-            width: screenWidth(99),
-            height: screenWidth(10),
-            color: color ?? AppColors.mainTextsColor,
-          ),
-          SizedBox(
-            width: screenWidth(20),
-          ),
-          CustomText(
-              text: text,
-              textColor: textcolor ?? AppColors.mainTextsColor,
-              bold: bold),
-          SizedBox(
-            width: screenWidth(2.5),
-          ),
-          CustomIcon(
-            imageName: iconName,
-            color: iconcolor,
-          )
-        ],
+      child: InkWell(
+        onTap: () {
+          onTap!();
+        },
+        child: Row(
+          children: [
+            Container(
+              width: screenWidth(99),
+              height: screenWidth(10),
+              color: color ?? AppColors.mainTextsColor,
+            ),
+            SizedBox(
+              width: screenWidth(20),
+            ),
+            CustomText(
+                text: text,
+                textColor: textcolor ?? AppColors.mainTextsColor,
+                bold: bold),
+            SizedBox(
+              width: screenWidth(2.5),
+            ),
+            CustomIcon(
+              imageName: iconName,
+              color: iconcolor,
+            )
+          ],
+        ),
       ),
     );
   }

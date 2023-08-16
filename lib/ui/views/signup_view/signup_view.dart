@@ -37,8 +37,7 @@ class _SignupViewState extends State<SignupView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                      onTap: () {},
-                      child: CustomIcon(imageName: 'ic_back (1)')),
+                      onTap: () {}, child: CustomIcon(imageName: 'ic_back')),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 110),
                     child: CustomText(
