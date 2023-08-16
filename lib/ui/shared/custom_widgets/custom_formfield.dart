@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_icon.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
+    this.customIcon,
     required this.hintText,
-    required this.controller,
-    required this.fillColor,
-    required this.hintTextColor,
+    this.controller,
+    this.fillColor,
+    this.hintTextColor,
     this.keyboardType,
     this.obscureText = false,
     this.validator,
@@ -19,7 +22,7 @@ class CustomTextFormField extends StatelessWidget {
   });
 
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Color? fillColor;
   final Color? hintTextColor;
   final TextInputType? keyboardType;
@@ -29,10 +32,10 @@ class CustomTextFormField extends StatelessWidget {
   final Color? prefixIconColor;
   final double? maxHeight;
   final double? maxWidth;
+  final CustomIcon? customIcon;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return TextFormField(
       // onChanged: myValidator,
       controller: controller,
@@ -41,29 +44,28 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       textAlign: TextAlign.start,
       decoration: InputDecoration(
-        prefixIcon: prefixIcon,
-        prefixIconColor: prefixIconColor,
-        contentPadding: EdgeInsets.symmetric(horizontal: size.width * 0.06),
+        prefixIcon: customIcon != null ? customIcon : prefixIcon,
+        prefixIconColor: prefixIconColor ?? AppColors.AppTextColor,
+        contentPadding: EdgeInsets.symmetric(horizontal: screenWidth(20)),
         constraints: BoxConstraints(
-          maxHeight: maxHeight ?? screenHieght(15),
+          maxHeight: maxHeight ?? screenHieght(13),
           maxWidth: maxWidth ?? screenWidth(1.1),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: AppColors.transparentColor,
-          ),
-          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(screenWidth(50)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(screenWidth(50)),
           borderSide: BorderSide.none,
         ),
         filled: true,
         hintStyle: TextStyle(
-          color: hintTextColor,
+          color: hintTextColor ?? AppColors.AppTextColor,
+          fontSize: screenWidth(20),
         ),
         hintText: hintText,
-        fillColor: fillColor,
+        fillColor: fillColor ?? AppColors.AppFormFieldColor,
       ),
       keyboardType: keyboardType ?? TextInputType.text,
     );

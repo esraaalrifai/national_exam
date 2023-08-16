@@ -12,16 +12,17 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor,
     this.borderColor,
     required this.onPressed,
-    this.ImageName,
+    this.width,
+    this.hieght,
   });
 
   final String text;
-  final String? ImageName;
   final Color? borderColor;
   final Color? textColor;
   final Color? backgroundColor;
   final Function? onPressed;
-
+  double? width;
+  double? hieght;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -31,18 +32,10 @@ class CustomButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (ImageName != null) ...[
-            SvgPicture.asset('images/$ImageName.svg'),
-            // (screenWidth(2)).pw,
-          ],
-          SizedBox(
-            width: (screenWidth(20)),
-          ),
           Text(
             text,
             style: TextStyle(
               color: textColor,
-              fontWeight: FontWeight.bold,
             ),
           ),
         ],
@@ -54,11 +47,13 @@ class CustomButton extends StatelessWidget {
                 color: borderColor!,
               )
             : null,
-        backgroundColor: backgroundColor ?? AppColors.mainOrangeColor,
-        shape: StadiumBorder(),
+        backgroundColor: backgroundColor ?? AppColors.AppPurpleColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(screenWidth(50)),
+        ),
         fixedSize: Size(
-          screenWidth(1.1),
-          screenHieght(12),
+          width = screenWidth(1.1),
+          hieght = screenHieght(13),
           // size.height * 0.08,
         ),
       ),

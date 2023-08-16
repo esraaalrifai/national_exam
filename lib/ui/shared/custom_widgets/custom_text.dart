@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
 import '../colors.dart';
 
 class CustomText extends StatelessWidget {
@@ -8,22 +9,34 @@ class CustomText extends StatelessWidget {
     this.fontSize,
     this.bold = false,
     required this.text,
-    required TextAlign textAlign,
+    this.onPressed,
+    this.textDecoration,
+    this.isSelected,
+    this.textAlign,
   });
   final Color? textColor;
   final double? fontSize;
   final bool? bold;
   final String text;
+  final void Function()? onPressed;
+  final TextDecoration? textDecoration;
+  final bool? isSelected;
+  final TextAlign? textAlign;
   @override
   Widget build(BuildContext context) {
-    return Text(
-        textAlign: TextAlign.center,
-        text,
-        style: TextStyle(
-          fontWeight: bold == true ? FontWeight.bold : FontWeight.normal,
-          fontSize: fontSize ?? 16,
-          color: textColor ?? AppColors.mainback,
-        ));
+    return InkWell(
+      onTap: onPressed,
+      child: Text(
+          textAlign: textAlign ?? TextAlign.start,
+          text,
+          style: TextStyle(
+            decoration: textDecoration,
+            decorationThickness: 4,
+            fontWeight: bold == true ? FontWeight.bold : FontWeight.normal,
+            fontSize: fontSize ?? screenWidth(20),
+            color: textColor ?? AppColors.AppTextColor,
+          )),
+    );
   }
 }
 // Big Text size fontSize: size.width * 0.1,

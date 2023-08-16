@@ -3,9 +3,10 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 
 //ملف الاعدادادتى لكامل ال api
 class NetworkConfig {
-  static String BASE_API = 'api/web/';
+  // static String BASE_API = '192.168.31.82:8000/api';
   static String getFullApiRoute(String apiroute) {
-    return BASE_API + apiroute;
+    // return BASE_API + apiroute;
+    return apiroute;
   }
 
   static Map<String, String>? getHeaders(

@@ -23,4 +23,14 @@ class AppColors {
   static Color secondaryGreyColor = Color.fromRGBO(124, 125, 126, 1);
   static Color placeholderGreyColor = Color.fromRGBO(182, 183, 183, 1);
   static Color fillGreyColor = Color.fromRGBO(242, 242, 242, 1);
+  //!/,,,,,,,,,,,,,,,,,,,,,,,,,
+  static Color AppPurpleColor = Color.fromRGBO(111, 40, 119, 1);
+  static Color AppPurple2Color = Color.fromRGBO(146, 63, 152, 1);
+  static Color ApppinkColor = Color.fromRGBO(185, 137, 189, 1);
+  static Color AppBlueColor = Color.fromRGBO(185, 229, 251, 1);
+  static Color AppbabyBlueColor = Color.fromRGBO(32, 196, 244, 1);
+  static Color AppFormFieldColor = Color.fromRGBO(185, 229, 251, 0.15);
+  static Color AppWhiteColor = Color.fromRGBO(255, 255, 255, 1);
+  static Color AppTextColor = Color.fromRGBO(111, 40, 119, 0.25);
+  static Color mainTextsColor = Color.fromRGBO(70, 69, 71, 1);
 }
